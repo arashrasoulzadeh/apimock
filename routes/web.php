@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/mocks', function () {
     return view('mocks');
 })->name('mocks');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/mock/{id}', function () {
-    return view('mock-edit');
+Route::middleware(['auth:sanctum', 'verified'])->get('/mock/{id}', function ( Request $request ) {
+    return view('mock-edit')->with( 'id', $request->id );
 })->name('mock-edit');

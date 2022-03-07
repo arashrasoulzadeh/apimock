@@ -1,5 +1,5 @@
 <div class="mx-auto py-4 sm:px-6 lg:px-4">
-    Your mocks for {{ $team->name }}
+    Your mocks for {{ $team->name }} 
 
     <br><br>
     <table class="min-w-full" width="100%">
