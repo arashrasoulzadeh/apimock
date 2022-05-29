@@ -35,11 +35,10 @@
                     {{ $mock->templates()->latest()->first()?->id ?? 'no templates' }}
                 </td>
                 <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                    today
+                    {{ $mock->lastCall }}
                 </td>
                 <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-                    <a href="{{ route( 'mock-edit', [ $mock->id ] ) }}" class="text-blue-600 dark:text-blue-500 hover:underline">Edit Mock</a> | 
-                    <a href="{{ route( 'mock-edit', [ $mock->id ] ) }}" class="text-blue-600 dark:text-blue-500 hover:underline">Update Tempalate</a>
+                    <a href="{{ route( 'mock-edit', [ $mock->id ] ) }}" class="text-blue-600 dark:text-blue-500 hover:underline"> Edit </a>
                 </td>
             </tr>
             @endforeach

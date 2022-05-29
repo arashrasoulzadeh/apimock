@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -24,5 +25,10 @@ class Mock extends Model
     public function templates()
     {
         return $this->hasMany( MockTemplate::class );
+    }
+
+    public function getlastCallAttribute()
+    {
+        return Carbon::now();
     }
 }
