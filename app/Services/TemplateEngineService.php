@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\MockTemplate;
 use App\Renderers\ImageRenderer;
+use App\Renderers\Integer;
 use App\Renderers\IntRange;
 use App\Renderers\LoremWord;
 use Illuminate\Pipeline\Pipeline;
@@ -19,7 +20,8 @@ class TemplateEngineService
 			[
 				ImageRenderer::class,
 				LoremWord::class,
-				IntRange::class
+				IntRange::class,
+				Integer::class
 			]
 		)
 		->then( function ( $content ) {

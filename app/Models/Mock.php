@@ -27,8 +27,18 @@ class Mock extends Model
         return $this->hasMany( MockTemplate::class );
     }
 
+    public function requests()
+    {
+        return $this->hasMany( ApiMockRequest::class );
+    }
+
     public function getlastCallAttribute()
     {
-        return Carbon::now();
+        return $this->requests()->latest()?->first()?->created_at ?? __( 'NO_REQUEST' );
+    }
+
+    public function getTemplateAttribute()
+    {
+        return $this?->templates()?->latest()?->first()?->body;
     }
 }

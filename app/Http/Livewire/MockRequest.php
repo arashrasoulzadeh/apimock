@@ -2,14 +2,16 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\ApiMockRequest;
 use App\Models\Mock;
 use Illuminate\Http\Request;
 use Livewire\Component;
 
-class MockEdit extends Component
+class MockRequest extends Component
 {
     private $mock_id = 0;
-    public  $method = '0' ;
+    public  $method = '0';
+    public  $requests;
 
     protected $rules = 
     [
@@ -33,16 +35,8 @@ class MockEdit extends Component
         {
             abort( 404 );
         }
-        return view('livewire.mock-edit' , [ 'mock' => $mock ]);
-    }
 
-    public function updateMethod( $id )
-    {
-
-    }
-
-    public function updateTemplate()
-    {
-        dd(1);
+        $this->requests = ApiMockRequest::whereMockId( $this->mock_id )->orderBy( 'id', 'desc' )->take(10)->get()->toArray();
+        return view('livewire.mock-request' , [ 'mock' => $mock, 'requests' => $this->requests ]);
     }
 }

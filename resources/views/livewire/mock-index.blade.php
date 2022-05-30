@@ -17,6 +17,9 @@
                 <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                     last call
                 </th>
+                 <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                    total calls
+                </th>
                 <th scope="col" class="relative py-3 px-6">
                     <span class="sr-only">Actions</span>
                 </th>
@@ -37,8 +40,14 @@
                 <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                     {{ $mock->lastCall }}
                 </td>
+                <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                    {{ $mock->requests->count() }}
+                </td>
                 <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-                    <a href="{{ route( 'mock-edit', [ $mock->id ] ) }}" class="text-blue-600 dark:text-blue-500 hover:underline"> Edit </a>
+                    <center>
+                        <a href="{{ route( 'mock-edit', [ $mock->id ] ) }}" class="text-blue-600 dark:text-blue-500 hover:underline"> Edit </a> | 
+                        <a href="{{ route( 'mock-request', [ $mock->id ] ) }}" class="text-blue-600 dark:text-blue-500 hover:underline"> Request Log </a>
+                    </center>
                 </td>
             </tr>
             @endforeach

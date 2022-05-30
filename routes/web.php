@@ -26,6 +26,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/mocks', function () {
     return view('mocks');
 })->name('mocks');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/mock/{id}', function ( Request $request ) {
+Route::middleware(['auth:sanctum', 'verified'])->get('/mock/edit/{id}', function ( Request $request ) {
     return view('mock-edit')->with( 'id', $request->id );
 })->name('mock-edit');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/mock/requests/{id}', function ( Request $request ) {
+    return view('mock-request')->with( 'id', $request->id );
+})->name('mock-request');
